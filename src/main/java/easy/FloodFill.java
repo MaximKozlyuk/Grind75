@@ -27,10 +27,16 @@ public class FloodFill {
         pixelsToScan.add(new Point(sr, sc));
         var alreadyProcessed = new ArrayList<Point>();
         var colorBefore = image[sr][sc];
+        if (colorBefore == color) {
+            return image;
+        }
 
         while (!pixelsToScan.isEmpty()) {
             var currentPixel = pixelsToScan.pop();
             int currX = currentPixel.x, currY = currentPixel.y;
+
+            image[currX][currY] = color;
+            alreadyProcessed.add(currentPixel);
 
             // top
             if (currY - 1 >= 0) {
@@ -75,9 +81,6 @@ public class FloodFill {
                     }
                 }
             }
-
-            image[currX][currY] = color;
-            alreadyProcessed.add(currentPixel);
         }
         return image;
     }
