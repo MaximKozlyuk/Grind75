@@ -35,7 +35,7 @@ public class FloodFill {
             // top
             if (currY - 1 >= 0) {
                 var topColor = image[currX][currY - 1];
-                if (topColor == colorBefore) {      // todo editing color-s on the go refactor.
+                if (topColor == colorBefore) {
                     var nextPoint = new Point(currX, currY - 1);
                     if (!alreadyProcessed.contains(nextPoint)) {
                         pixelsToScan.add(nextPoint);
