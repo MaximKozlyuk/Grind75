@@ -36,4 +36,17 @@ public class LinkedListCycleTest {
         assertFalse(new LinkedListCycle().hasCycle(pos0));
     }
 
+    @Test
+    public void manyNodesNoCycle() {
+        var pos0 = new LinkedListCycle.ListNode(3);
+        var pos1 = new LinkedListCycle.ListNode(2);
+        var pos2 = new LinkedListCycle.ListNode(0);
+        var pos3 = new LinkedListCycle.ListNode(-4);
+        pos0.next = pos1;
+        pos1.next = pos2;
+        pos2.next = pos3;
+        pos3.next = null;
+        assertFalse(new LinkedListCycle().hasCycle(pos0));
+    }
+
 }

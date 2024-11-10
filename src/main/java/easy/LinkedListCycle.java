@@ -16,11 +16,16 @@ public class LinkedListCycle {
 
     /**
      * https://leetcode.com/problems/linked-list-cycle/
+     * o(1) solution.
      */
     public boolean hasCycle(ListNode head) {
-        if (head.next == null) {
+        if (head == null || head.next == null) {
             return false;
         }
+        if (head.next.next == head) {
+            return true;
+        }
+        var deletedNode = new ListNode(Integer.MIN_VALUE);
 
         var current = head.next;
         for (;;) {
@@ -28,13 +33,15 @@ public class LinkedListCycle {
                 return false;
             }
             if (current.next == null) {
+                return false;
+            }
+            if (current.next == deletedNode) {
                 return true;
             }
             var newCurrent = current.next;
-            current.next = null;
+            current.next = deletedNode;
             current = newCurrent;
         }
-
     }
 
 }
