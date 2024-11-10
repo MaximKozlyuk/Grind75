@@ -43,8 +43,8 @@ public class FloodFillTest {
                 {0, 0, 0}
         };
         int[][] expected = {
-                {0, 0, 0},
-                {0, 0, 0}
+                {2, 2, 2},
+                {2, 2, 2}
         };
         var editedImage = new FloodFill().floodFill(image, 1, 0, 2);
         assertTrue(arraysEqual(expected, editedImage));

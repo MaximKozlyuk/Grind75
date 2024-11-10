@@ -38,47 +38,35 @@ public class FloodFill {
             image[currX][currY] = color;
             alreadyProcessed.add(currentPixel);
 
-            // top
-            if (currY - 1 >= 0) {
-                var topColor = image[currX][currY - 1];
-                if (topColor == colorBefore) {
-                    var nextPoint = new Point(currX, currY - 1);
-                    if (!alreadyProcessed.contains(nextPoint)) {
-                        pixelsToScan.add(nextPoint);
-                    }
+            // Top
+            if (currY - 1 >= 0 && image[currX][currY - 1] == colorBefore) {
+                var nextPoint = new Point(currX, currY - 1);
+                if (!alreadyProcessed.contains(nextPoint)) {
+                    pixelsToScan.add(nextPoint);
                 }
             }
 
-            // right
-            if (currX + 1 < image.length) {
-                var rightColor = image[currX + 1][currY];
-                if (rightColor == colorBefore) {
-                    var nextPoint = new Point(currX + 1, currY);
-                    if (!alreadyProcessed.contains(nextPoint)) {
-                        pixelsToScan.add(nextPoint);
-                    }
+            // Right
+            if (currX + 1 < image.length && image[currX + 1][currY] == colorBefore) {
+                var nextPoint = new Point(currX + 1, currY);
+                if (!alreadyProcessed.contains(nextPoint)) {
+                    pixelsToScan.add(nextPoint);
                 }
             }
 
-            // bottom
-            if (currY + 1 < image.length) {
-                var bottomColor = image[currX][currY + 1];
-                if (bottomColor == colorBefore) {
-                    var nextPoint = new Point(currX, currY + 1);
-                    if (!alreadyProcessed.contains(nextPoint)) {
-                        pixelsToScan.add(nextPoint);
-                    }
+            // Bottom
+            if (currY + 1 < image[0].length && image[currX][currY + 1] == colorBefore) {
+                var nextPoint = new Point(currX, currY + 1);
+                if (!alreadyProcessed.contains(nextPoint)) {
+                    pixelsToScan.add(nextPoint);
                 }
             }
 
-            // left
-            if (currX - 1 >= 0) {
-                var leftColor = image[currX - 1][currY];
-                if (leftColor == colorBefore) {
-                    var nextPoint = new Point(currX - 1, currY);
-                    if (!alreadyProcessed.contains(nextPoint)) {
-                        pixelsToScan.add(nextPoint);
-                    }
+            // Left
+            if (currX - 1 >= 0 && image[currX - 1][currY] == colorBefore) {
+                var nextPoint = new Point(currX - 1, currY);
+                if (!alreadyProcessed.contains(nextPoint)) {
+                    pixelsToScan.add(nextPoint);
                 }
             }
         }
