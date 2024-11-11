@@ -1,8 +1,7 @@
-package easy;
+package leetcode.easy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import leetcode.easy.ValidPalindrome;
 import org.junit.jupiter.api.Test;
 
 

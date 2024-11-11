@@ -1,6 +1,5 @@
-package easy;
+package leetcode.easy;
 
-import leetcode.easy.FloodFill;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

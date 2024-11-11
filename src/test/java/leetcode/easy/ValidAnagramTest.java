@@ -1,6 +1,5 @@
-package easy;
+package leetcode.easy;
 
-import leetcode.easy.ValidAnagram;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
