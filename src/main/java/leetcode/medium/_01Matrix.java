@@ -14,11 +14,8 @@ public final class _01Matrix {
             if (obj == this) {
                 return true;
             }
-            if (obj instanceof Point(int x1, int y1)) {
-                return (x1 == this.x) && (y1 == this.y);
-            } else {
-                return false;
-            }
+            var otherPoint = (Point)obj;
+            return (otherPoint.x == this.x) && (otherPoint.y == this.y);
         }
 
         public int distanceTo(Point otherPoint) {
@@ -35,20 +32,20 @@ public final class _01Matrix {
         public List<Point> adjacent() {
             var result = new LinkedList<Point>();
             // top
-            if (y - 1 >= 0) {
-                result.add(new Point(x, y - 1));
+            if (x - 1 >= 0) {
+                result.add(new Point(x - 1, y));
             }
             // right
+            if (y + 1 <= _matrix[0].length - 1) {
+                result.add(new Point(x, y + 1));
+            }
+            // bottom
             if (x + 1 <= _matrix.length - 1) {
                 result.add(new Point(x + 1, y));
             }
-            // bottom
+            // left
             if (y - 1 >= 0) {
                 result.add(new Point(x, y - 1));
-            }
-            // left
-            if (x - 1 >= 0) {
-                result.add(new Point(x - 1, y));
             }
             return result;
         }
@@ -62,13 +59,44 @@ public final class _01Matrix {
         if (mat == null || mat.length == 0) {
             return mat;
         }
-
         _matrix = mat;
         var lookingFor = 0;
-        var result = new int[mat.length][mat[0].length];
+        if (_matrix.length == 1) {
+            return singleDimensionAlg(lookingFor);
+        } else {
+            return general2DimensionalAlg(lookingFor);
+        }
+    }
 
-        for (int x = 0; x < mat.length; x++) {
-            for (int y = 0; y < mat[0].length; y++) {
+    private int[][] singleDimensionAlg(int lookingFor) {
+        var vector = _matrix[0];
+        var result = new int[1][vector.length];
+
+        var lookingForIndexes = new ArrayList<Integer>();
+        for (int i = 0; i < vector.length; i++) {
+            if (vector[i] == lookingFor) {
+                lookingForIndexes.add(i);
+            }
+        }
+
+        for (int i = 0; i < vector.length; i++) {
+            var minDistance = vector.length;
+            for (int lfi = 0; lfi < lookingForIndexes.size(); lfi++) {
+                var currentToCheck = Math.abs(i - lookingForIndexes.get(lfi));
+                if (currentToCheck < minDistance) {
+                    minDistance = currentToCheck;
+                }
+            }
+            result[0][i] = minDistance;
+        }
+
+        return result;
+    }
+
+    private int[][] general2DimensionalAlg(int lookingFor) {
+        var result = new int[_matrix.length][_matrix[0].length];
+        for (int x = 0; x < _matrix.length; x++) {
+            for (int y = 0; y < _matrix[0].length; y++) {
                 var currentPoint = new Point(x, y);
                 if (currentPoint.value() == lookingFor) {
                     result[x][y] = 0;
