@@ -2,10 +2,6 @@ package leetcode.easy;
 
 public class TwoSum {
 
-    public static void main(String[] args) {
-
-    }
-
     // https://leetcode.com/problems/two-sum/description/
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
