@@ -35,8 +35,9 @@ public class CoinChange {
             }
         }
 
-        memo.put(remaining, minCoins == Integer.MAX_VALUE ? -1 : minCoins);
-        return memo.get(remaining);
+        var result = minCoins == Integer.MAX_VALUE ? -1 : minCoins;
+        memo.put(remaining, result);
+        return result;
     }
 
 }
