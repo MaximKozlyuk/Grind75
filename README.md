@@ -1,3 +1,5 @@
 # Grind 75 questions
 
-https://www.techinterviewhandbook.org/grind75/
+[Leetcode profile](https://leetcode.com/u/MaximKozlyuk/)
+
+Started with [grind75](https://www.techinterviewhandbook.org/grind75/)
